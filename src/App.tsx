@@ -3,6 +3,7 @@ import FAQ from './FAQ.tsx';
 import { FaWhatsapp } from "react-icons/fa"; 
 import Countdown from './Countdown.tsx';
 import JoinCommunity from './JoinCommunity';
+import './index.css'
 import { Calendar, MapPin, Users, Code, Brain, Target, Rocket, Mail, Phone, MapPinned, Github, Instagram , Zap, Cpu, Sparkles } from 'lucide-react';
 
 function App() {
