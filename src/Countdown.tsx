@@ -1,12 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-const Countdown = ({ targetDate }) => {
-  const [timeLeft, setTimeLeft] = useState({});
+// Define the type for the 'timeLeft' state
+interface TimeLeft {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
+// Define the type for the 'Countdown' component props
+interface CountdownProps {
+  targetDate: string;
+}
+
+const Countdown = ({ targetDate }: CountdownProps) => {
+  // Initialize the 'timeLeft' state with the correct type and default values
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();
-      const timeDifference = new Date(targetDate) - now;
+      const target = new Date(targetDate).getTime();
+      const timeDifference = target - now.getTime();
 
       if (timeDifference <= 0) {
         clearInterval(interval);
@@ -32,12 +52,12 @@ const Countdown = ({ targetDate }) => {
 
   return (
     <div className="countdown-timer text-center py-6 px-4 bg-white/10 font-bold rounded-lg">
-  <div className="text-yellow">
-    <p className="text-2xl sm:text-3xl md:text-4xl">
-      {timeLeft.days} Days {timeLeft.hours} Hours {timeLeft.minutes} Minutes {timeLeft.seconds} Seconds
-    </p>
-  </div>
-</div>
+      <div className="text-yellow">
+        <p className="text-2xl sm:text-3xl md:text-4xl">
+          {timeLeft.days} Days {timeLeft.hours} Hours {timeLeft.minutes} Minutes {timeLeft.seconds} Seconds
+        </p>
+      </div>
+    </div>
   );
 };
 

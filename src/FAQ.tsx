@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-const FAQ = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+interface FAQItem {
+  question: string;
+  answer: React.ReactNode; // Allowing JSX as answer
+}
 
-  const toggleFAQ = (index) => {
+const FAQ = () => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const toggleFAQ = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  const faqs = [
+  const faqs: FAQItem[] = [
     {
       question: "What is the Scrapyard Hackathon?",
       answer:
@@ -48,19 +53,20 @@ const FAQ = () => {
             youthinnovatorshub@gmail.com
           </a> or message us on{" "}
           <a
-  href="https://wa.me/250791845268"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-moonblossom font-bold"
-> WhatsApp
-</a>
+            href="https://wa.me/250791845268"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-moonblossom font-bold"
+          >
+            WhatsApp
+          </a>
         </>
       )
     }
   ];
 
   return (
-    <section className=" py-16 px-6 bg-gradient-to-r from-gray-900 to-gray-800">
+    <section className="py-16 px-6 bg-gradient-to-r from-gray-900 to-gray-800">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-4xl font-extrabold text-moonblossom mb-12">
           Frequently Asked Questions
@@ -79,17 +85,11 @@ const FAQ = () => {
               >
                 <span>{faq.question}</span>
                 <ChevronDown
-                  className={`transition-transform duration-300 ${
-                    activeIndex === index ? "rotate-180" : "rotate-0"
-                  }`}
+                  className={`transition-transform duration-300 ${activeIndex === index ? "rotate-180" : "rotate-0"}`}
                 />
               </button>
               <div
-                className={`transition-all duration-500 overflow-hidden ${
-                  activeIndex === index
-                    ? "max-h-40 opacity-100 mt-4"
-                    : "max-h-0 opacity-0"
-                }`}
+                className={`transition-all duration-500 overflow-hidden ${activeIndex === index ? "max-h-40 opacity-100 mt-4" : "max-h-0 opacity-0"}`}
               >
                 <p className="text-yellow-100">{faq.answer}</p>
               </div>
