@@ -140,8 +140,6 @@ function App() {
           </div>
         </div>
       </div>
-
-
       <div className="border-t border-white/40 relative   p-8 bg-gray-900/90 backdrop-blur-lg   shadow-lg overflow-hidden">
         <div className='max-w-3xl mx-auto'>
           {/* Background Pattern */}
