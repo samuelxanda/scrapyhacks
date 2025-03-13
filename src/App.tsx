@@ -8,7 +8,7 @@ import { Calendar, MapPin, Users, Code, Brain, Target, Rocket, Mail, Phone, MapP
 
 function App() {
 
-  const targetDate = '2025-03-14T05:00:00'; // Change this to your event date
+  const targetDate = '2025-03-15T07:00:00'; // Change this to your event date
   
   const schedule = [
     { time: "8:00 AM - 8:30 AM", activity: "Check-in & Registration" },
